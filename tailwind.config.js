@@ -12,6 +12,12 @@ export default {
 
     theme: {
         extend: {
+            colors: {
+                darkblue: "#243D6A",
+                lightblue: "#244978",
+                lightgrey: "#DCDCDC",
+                viagrey: "#DCDCDD",
+            },
             fontFamily: {
                 sans: ['Figtree', ...defaultTheme.fontFamily.sans],
             },
