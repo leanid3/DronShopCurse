@@ -13,25 +13,27 @@ class Product extends Model
         "brand_id",
         "title",
         "description",
+        'status',
+        "rating",
         "price",
         "image"
      ];
-     public function Categories()
+     public function categories()
      {
         return $this->belongsTo(Category::class);
      }
   
      public function brand()
      {
-        return $this->hasMa(Brand::class);
+        return $this->belongsTo(Brand::class);
      }
   
-     public function ProductFeatures()
+     public function productFeatures()
      {
         return $this->hasMany(ProductFeatures::class);
      }
   
-     public function Comments(){
+     public function comments(){
         return $this->hasMany(Comments::class)->orderBy('created_at');
      }
 }

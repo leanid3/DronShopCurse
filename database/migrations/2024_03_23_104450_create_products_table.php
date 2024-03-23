@@ -17,7 +17,9 @@ return new class extends Migration
             $table->foreignId('brand_id')->constrained()->cascadeOnDelete()->cascadeOnUpdate();
             $table->string('title');
             $table->text('description');
+            $table->float('rating');
             $table->integer('price');
+            $table->text('status');
             $table->text('image')->nullable();
 
             $table->timestamps();

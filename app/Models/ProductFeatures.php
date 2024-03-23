@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class ProductFeatures extends Model
 {
+    use HasFactory;
     public $timestamps = false;
 
     protected $fillblade = [
@@ -21,7 +22,7 @@ class ProductFeatures extends Model
         'version',
     ];
 
-    public function Product(){
+    public function product(){
         return $this->belongsTo(Product::class);
     }
 }

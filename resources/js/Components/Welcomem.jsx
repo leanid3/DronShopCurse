@@ -1,6 +1,6 @@
 import { Link, Head } from '@inertiajs/react';
 
-export default function Welcome({ auth, laravelVersion, phpVersion }) {
+export default function Welcomsssssse({ auth, laravelVersion, phpVersion }) {
     const handleImageError = () => {
         document.getElementById('screenshot-container')?.classList.add('!hidden');
         document.getElementById('docs-card')?.classList.add('!row-span-1');
@@ -33,7 +33,7 @@ export default function Welcome({ auth, laravelVersion, phpVersion }) {
                                     />
                                 </svg>
                             </div>
-                            {/* <nav className="-mx-3 flex flex-1 justify-end">
+                            <nav className="-mx-3 flex flex-1 justify-end">
                                 {auth.user ? (
                                     <Link
                                         href={route('dashboard')}
@@ -57,7 +57,7 @@ export default function Welcome({ auth, laravelVersion, phpVersion }) {
                                         </Link>
                                     </>
                                 )}
-                            </nav> */}
+                            </nav>
                         </header>
 
                         <main className="mt-6">

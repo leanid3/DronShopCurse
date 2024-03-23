@@ -1,6 +1,6 @@
-import Header from './components/Header'
-import Mainpage from './page/Mainpage'
-import Footer from './components/Footer'
+import Header from '../Components/assets/Header'
+import Mainpage from '../Pages/Mainpage'
+import Footer from '../Components/assets/Footer'
 import './App.css'
 import MyInput from './components/UI/MyInput'
 
