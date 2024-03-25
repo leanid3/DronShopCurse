@@ -10,6 +10,8 @@ use Inertia\Inertia;
 
 Route::get('/', [PageController::class, 'Welcome'])->name('home');
 Route::get('/catalog/{id}', [ProductController::class, 'showProduct'])->name('showProduct');
+Route::get('/cart', [PageController::class, 'cart'])->name('cart');
+
 
 Route::get('/dashboard', function () {
     return Inertia::render('Dashboard');

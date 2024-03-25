@@ -5,22 +5,25 @@ namespace App\Http\Controllers;
 use App\Models\Product;
 use Inertia\Inertia;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 class PageController extends Controller
 {
-    public function Welcome()
+    public function Welcome(Product $product)
     {
-        $arrayProduct = Product::with('brand')->get();
-        // $brand = $arrayProduct->brand;
+
+        $arrayProduct = $product->with('brand')->with('categories')->get();
         return Inertia::render(
             'Mainpage',
             [
-                'canLogin' => Route::has('login'),
-                'canRegister' => Route::has('register'),
+                // 'auth' => Auth::user(),
                 'arrayProduct' => $arrayProduct,
-                // 'brand' => $brand,
             ]
         );
+    }
+    public function cart()
+    {
+        return Inertia::render('Cart');
     }
 }

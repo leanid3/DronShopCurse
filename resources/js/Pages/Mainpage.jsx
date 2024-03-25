@@ -1,8 +1,8 @@
+import Welcome from "@/Components/assets/Welcome.jsx";
 import Myslider from "../Components/assets/slider/Myslider.jsx"
 import Catalog from "../Components/assets/Сatalog.jsx";
-import Welcome from "@/Components/assets/Welcome.jsx";
 import { Head } from "@inertiajs/react";
-export default function Mainpage({auth, arrayProduct}) {
+export default function Mainpage({arrayProduct}) {
   const slides =[
     'https://pngimg.com/uploads/drone/drone_PNG139.png', 
     'https://images-na.ssl-images-amazon.com/images/I/81LbQx2IA+L.png', 
@@ -101,19 +101,20 @@ export default function Mainpage({auth, arrayProduct}) {
   //     price: 149
   //   }
   // ];
-  
+ 
   return (
-    <Welcome auth={auth}>
-        
-      <Head title="Главная страница"/>
-      <section className=" flex flex-col items-center">
-      
-        <div className=" w-full lg:w-[60%] lg:mx-auto md:p-11">
-          <Myslider slides={slides} />
-        </div>
-        <Catalog arrayProduct={arrayProduct} />
-      </section>
+
+        <Welcome>
+          <Head title="Главная страница"/>
+          <section className=" flex flex-col items-center">
+          
+            <div className=" w-full lg:w-[60%] lg:mx-auto md:p-11">
+              <Myslider slides={slides} />
+            </div>
+            <Catalog arrayProduct={arrayProduct} />
+          </section>
+        </Welcome>
    
-    </Welcome>
+
   )
 }
