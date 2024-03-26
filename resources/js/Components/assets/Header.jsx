@@ -22,14 +22,14 @@ export default function Header() {
           
           {/* {auth.user
             ? 
-            <Link  href={route('dashboard')}><HiOutlineUser  className='text-xl md:text-3xl'/> <p className='hidden lg:block'>{user.name}</p></Link>
+            <Link  href={route('dashboard')}><HiOutlineUser  className='text-xl md:text-3xl'/> <p className='hidden lg:block'>{user.name}</p></Link> */}
 
             
-            : <>
-                <Link href={route('register')}><HiOutlineUser className='text-xl md:text-3xl'/> <p className='hidden lg:block'>Регистрация</p></Link>
-                <Link href={route('login')}><IoLogInSharp className='text-xl md:text-3xl'/> <p className='hidden lg:block'>Вход</p></Link>
-              </>
-        } */}
+            {/* : <> */}
+                <Link href={route('register')}><HiOutlineUser className='text-xl md:text-3xl'/></Link>
+                {/* <Link href={route('login')}><IoLogInSharp className='text-xl md:text-3xl'/> <p className='hidden lg:block'>Вход</p></Link> */}
+              {/* </> */}
+        {/* } */}
       </div>
     </header>
 

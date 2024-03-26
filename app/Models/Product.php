@@ -18,6 +18,7 @@ class Product extends Model
         "price",
         "image"
      ];
+
      public function categories()
      {
         return $this->belongsTo(Category::class);
@@ -36,4 +37,8 @@ class Product extends Model
      public function comments(){
         return $this->hasMany(Comments::class)->orderBy('created_at');
      }
-}
+
+     public function carts(){
+      return $this->hasMany(Carts::class);
+     }
+   }

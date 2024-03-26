@@ -3,17 +3,22 @@
 namespace App\Http\Controllers;
 
 use App\Models\Product;
+use App\Models\User;
 use Inertia\Inertia;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
+use function Termwind\render;
+
 class PageController extends Controller
 {
-    public function Welcome(Product $product)
-    {
 
+
+    public function home(Product $product)
+    {
         $arrayProduct = $product->with('brand')->with('categories')->get();
+        
         return Inertia::render(
             'Mainpage',
             [

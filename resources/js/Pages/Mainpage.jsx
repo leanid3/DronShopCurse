@@ -104,8 +104,8 @@ export default function Mainpage({arrayProduct}) {
  
   return (
 
-        <Welcome>
-          <Head title="Главная страница"/>
+        // <Welcome>
+          // <Head title="Главная страница"/>
           <section className=" flex flex-col items-center">
           
             <div className=" w-full lg:w-[60%] lg:mx-auto md:p-11">
@@ -113,7 +113,7 @@ export default function Mainpage({arrayProduct}) {
             </div>
             <Catalog arrayProduct={arrayProduct} />
           </section>
-        </Welcome>
+        // </Welcome>
    
 
   )

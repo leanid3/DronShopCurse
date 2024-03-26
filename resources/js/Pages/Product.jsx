@@ -2,9 +2,9 @@ import Welcome from '../Components/assets/Welcome'
 import { Head } from '@inertiajs/react'
 import React from 'react'
 
-export default function Product({auth, product} ) {
+export default function Product({product} ) {
   return (
-    <Welcome auth={auth}>
+    <React.Fragment>
         <Head title={product.title }></Head>
           <div class="grid grid-cols-2 gap-4">
               <div>
@@ -48,6 +48,6 @@ export default function Product({auth, product} ) {
                   </div>
               </div>
           </div>
-    </Welcome>
+  </React.Fragment>
   )
 }
