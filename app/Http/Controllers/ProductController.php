@@ -12,8 +12,6 @@ class ProductController extends Controller
     public function showProduct($id) {
        $product = Product::with('brand')->findOrFail($id);
         return Inertia::render( 'Product', [
-            'canLogin' => Route::has('login'),
-            'canRegister' => Route::has('register'),
             'product' => $product
         ]);
     }

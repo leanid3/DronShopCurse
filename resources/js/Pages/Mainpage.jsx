@@ -1,14 +1,14 @@
 import Welcome from "@/Components/assets/Welcome.jsx";
 import Myslider from "../Components/assets/slider/Myslider.jsx"
 import Catalog from "../Components/assets/Сatalog.jsx";
-import { Head } from "@inertiajs/react";
+import { Head, usePage } from "@inertiajs/react";
 export default function Mainpage({arrayProduct}) {
   const slides =[
     'https://pngimg.com/uploads/drone/drone_PNG139.png', 
     'https://images-na.ssl-images-amazon.com/images/I/81LbQx2IA+L.png', 
     'https://www.cined.com/content/uploads/2018/01/Mavic-Air_Flame-Red_side-2-featured.jpg'
   ]
-  
+  const {auth} = usePage().props
   // const arrayProduct = [
   //   {
   //     id: 1,
@@ -101,11 +101,11 @@ export default function Mainpage({arrayProduct}) {
   //     price: 149
   //   }
   // ];
- 
+ console.log(auth.user)
   return (
 
-        // <Welcome>
-          // <Head title="Главная страница"/>
+        <>
+          <Head title="Главная страница"/>
           <section className=" flex flex-col items-center">
           
             <div className=" w-full lg:w-[60%] lg:mx-auto md:p-11">
@@ -113,7 +113,7 @@ export default function Mainpage({arrayProduct}) {
             </div>
             <Catalog arrayProduct={arrayProduct} />
           </section>
-        // </Welcome>
+         </>
    
 
   )

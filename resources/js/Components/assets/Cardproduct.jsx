@@ -15,7 +15,7 @@ function Cardproduct({product}) {
         <img  src={product.image} alt="{product.image}"  className='rounded-t-lg' />
         <div className="p-4 flex flex-col justify-between flex-1">
         <div>
-            <p className='text-sm text-gray-600'>{product.brand.brand}</p>
+            {/* <p className='text-sm text-gray-600'>{product.brand.brand}</p> */}
             <Link href={route('showProduct', {id: product.id})} className='text-lg mb-2 hover:outline font-semibold'>{product.title}</Link>
             <p className=' text-dar-400 text-lg'>{product.rating}</p>
             <p className=' text-darkblue text-lg'>{product.price} руб.</p>

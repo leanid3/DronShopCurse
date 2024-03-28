@@ -10,36 +10,18 @@ import Welcome from './Components/assets/Welcome';
 
 const appName = import.meta.env.VITE_APP_NAME;
 
+
 createInertiaApp({
     title: (title) => `${title} - ${appName}`,
-    resolve: (name) => resolvePageComponent(`./Pages/${name}.jsx`, import.meta.glob('./Pages/**/*.jsx')),
+    resolve: (name) => resolvePageComponent(`./Pages/${name}.jsx`, import.meta.glob('./Pages/**/*.jsx')).then(module => module.default),
     setup({ el, App, props }) {
-        const root = createRoot(el);
-        // const auth = User.getUserData();
-        // const userData = document.getElementById('app').getAttribute('data-user');
-        // const auth = JSON.parse(userData);
-        // Используем Welcome для обертывания InertiaApp
-        root.render(
-            <Welcome>
-                <App {...props} />
-            </Welcome>
-        );
+      const Layout = props.layout || Welcome;
+      const root = createRoot(el);
+      root.render(
+        <Layout>
+          <App {...props} />
+        </Layout>
+      );
     },
-    progress: {
-        color: '#4B5563',
-    },
-});
-
-
-// createInertiaApp({
-//     title: (title) => `${title} - ${appName}`,
-//     resolve: (name) => resolvePageComponent(`./Pages/${name}.jsx`, import.meta.glob('./Pages/**/*.jsx')),
-//     setup({ el, App, props }) {
-//         const root = createRoot(el);
-
-//         root.render(<App {...props} />);
-//     },
-//     progress: {
-//         color: '#4B5563',
-//     },
-// });
+  });
+//    

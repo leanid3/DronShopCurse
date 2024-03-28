@@ -17,7 +17,8 @@ class PageController extends Controller
 
     public function home(Product $product)
     {
-        $arrayProduct = $product->with('brand')->with('categories')->get();
+    
+        $arrayProduct = $product->with('brand')->get();
         
         return Inertia::render(
             'Mainpage',
