@@ -1,11 +1,12 @@
 import React from 'react'
 import Footer from '@/Components/assets/Footer.jsx'
 import Header from '@/Components/assets/Header.jsx';
+import { Head } from '@inertiajs/react';
 
-export default function Welcome({children}) {
+export default function Layout({children, auth}) {
   return (
     <>
-      <Header/>
+      <Header auth={auth}/>
       <main className="container my-20 mx-auto bg-lightgrey">
         {children}
       </main>

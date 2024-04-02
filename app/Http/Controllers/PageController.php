@@ -20,6 +20,8 @@ class PageController extends Controller
     
         $arrayProduct = $product->with('brand')->get();
         
+
+
         return Inertia::render(
             'Mainpage',
             [

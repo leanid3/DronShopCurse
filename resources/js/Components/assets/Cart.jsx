@@ -1,5 +1,4 @@
 import React from 'react'
-import Welcome from '@/Components/assets/Welcome'
 export default function Cart(item) {
   const [cartItems, setCartItems] = useState([]);
 
