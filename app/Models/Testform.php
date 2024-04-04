@@ -9,8 +9,10 @@ class Testform extends Model
 {
     use HasFactory;
     public $timestamps = false;
-    protected $fillable =[
+    protected $fillable = [
         'name',
-        'email'
+        'email',
+        'avatar',
+        'radioValue'
     ];
 }

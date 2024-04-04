@@ -5,7 +5,6 @@ import { HiOutlineUser, HiOutlineShoppingCart   } from "react-icons/hi";
 import { Link, useForm, usePage } from "@inertiajs/react";
 import InputSearch from "../InputSearch";
 export default function Header({auth}) {
-
   return (
 
      
@@ -15,7 +14,7 @@ export default function Header({auth}) {
     <InputSearch/>
       
       <div className='flex text-center md:text-left gap-3 *:text-lightgrey *:flex *:flex-col *:items-center '>
-        <Link href='#'><HiOutlineShoppingCart className='text-xl md:text-3xl'/> <p className='hidden lg:block'>Корзина</p></Link>
+        <Link href={route('cart')}><HiOutlineShoppingCart className='text-xl md:text-3xl'/> <p className='hidden lg:block'>Корзина</p></Link>
         <Link href="#"><BsBookmarkStar className='text-xl md:text-3xl'/> <p className='hidden lg:block'>Избранное</p></Link>
         <Link href="#"><FaPercent className='text-xl md:text-3xl'/> <p className='hidden lg:block'>Акция</p></Link>           
         {auth && auth.user ? (

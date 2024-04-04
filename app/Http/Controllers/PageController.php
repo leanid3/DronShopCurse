@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Product;
+use App\Models\Testform;
 use App\Models\User;
 use Inertia\Inertia;
 use Illuminate\Http\Request;
@@ -19,15 +20,12 @@ class PageController extends Controller
     {
     
         $arrayProduct = $product->with('brand')->get();
-        
-
-
         return Inertia::render(
             'Mainpage',
             [
                 // 'auth' => Auth::user(),
                 'arrayProduct' => $arrayProduct,
-            ]
+                ]
         );
     }
     public function cart()

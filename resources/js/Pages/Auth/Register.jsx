@@ -10,7 +10,7 @@ export default function Register() {
     const { data, setData, post, processing, errors, reset } = useForm({
         name: '',
         email: '',
-        avatar: null,
+        // avatar: null,
         password: '',
         password_confirmation: '',
     });
@@ -66,11 +66,11 @@ export default function Register() {
                     <InputError message={errors.email} className="mt-2" />
                 </div>
 
-                <div className="mt-4">
+                {/* <div className="mt-4">
                     <InputLabel htmlFor="avatar" value="Avatar" />
 
                     <TextInput
-                        id="Avatar"
+                        id="avatar"
                         type="file"
                         name="avatar"
                         value={data.avatar}
@@ -83,7 +83,7 @@ export default function Register() {
                         {progress.percentage}%
                     </progress>)}
                     <InputError message={errors.avatar} className="mt-2" />
-                </div>
+                </div> */}
 
                 <div className="mt-4">
                     <InputLabel htmlFor="password" value="Password" />

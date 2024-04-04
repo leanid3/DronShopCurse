@@ -8,19 +8,28 @@ use Illuminate\Support\Facades\Redirect;
 
 class TestformController extends Controller
 {
-    public function submitdef(Request $request){
+    public function submitdef(Request $request)
+    {
         $request->validate([
             'name' => ['required', 'min:10'],
-            'email' =>['required', 'email', 'exists:users,email'],
+            'email' => ['required', 'email', 'exists:users,email'],
+            'avatar' => ['required', 'image'],
+            'radioValue' => ['required']
         ]);
 
-        $message = Testform::create(
-          $request->only('name', 'email')  
-        );
+        $avatar = $request->file('avatar');
 
-        return Redirect::route('home');
+        $avatarName = time() . '.' . $avatar->getClientOriginalExtension();
+
+        $avatar->storeAs('public/uploads', $avatarName);
+
+        Testform::create([
+            'name' => $request->name,
+            'email' => $request->email,
+            'avatar' => 'storage/uploads/' . $avatarName,
+            'radioValue'=> $request->radioValue
+        ]);
+
+        return Redirect::back();
     }
-    
-
-
 }
