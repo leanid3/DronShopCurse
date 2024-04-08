@@ -2,24 +2,24 @@
 
 namespace Database\Factories;
 
-use App\Models\Brand;
+use App\Models\Brend;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Brand>
+ * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Brend>
  */
-class BrandFactory extends Factory
+class BrendFactory extends Factory
 {
     /**
      * Define the model's default state.
      *
      * @return array<string, mixed>
      */
-    protected $model = Brand::class;
+    protected $model = Brend::class;
     public function definition(): array
     {
         return [
-            'brand' => $this->faker->randomElement(['DJI', 'Parrot', 'Syma', 'Holy Stone'])
+            'brend' => $this->faker->randomElement(['DJI', 'Parrot', 'Syma', 'Holy Stone'])
         ];
     }
 }

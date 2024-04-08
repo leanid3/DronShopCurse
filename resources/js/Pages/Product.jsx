@@ -1,12 +1,14 @@
+import ShowCommentsComponent from '@/Components/assets/ShowCommentsComponent'
 import Layout from '../Layouts/Layout'
 import { Head } from '@inertiajs/react'
 import React from 'react'
+import CommentComponent from '@/Components/assets/CommentComponent'
 
-export default function Product({product, auth} ) {
+export default function Product({product, auth, comments} ) {
     return (
         <Layout auth={auth}>
             <Head title={product.title }></Head>
-            <div class="grid grid-cols-2 gap-4">
+            <div class="grid grid-cols-2 gap-4 p-5">
                 <div>
                     <img src={product.image} alt={product.image} class="w-full"/>
                 </div>
@@ -18,8 +20,8 @@ export default function Product({product, auth} ) {
                         <p>{product.category.categoryName}</p>
                     </div>
                     <div class="mb-4">
-                        <p class="font-bold">Brand:</p>
-                        <p>{product.brand.brand}</p>
+                        <p class="font-bold">Brend:</p>
+                        <p>{product.brend.brend}</p>
                     </div>
                     <div class="mb-4">
                         <p class="font-bold">Status:</p>
@@ -35,7 +37,7 @@ export default function Product({product, auth} ) {
                     </div>
                 </div>
             </div>
-            <div class="mt-8">
+            {/* <div class="mt-8">
                 <h2 class="text-2xl font-bold mb-4">Characteristics</h2>
                 <div class="grid grid-cols-2 gap-4">
                     <div>
@@ -47,7 +49,9 @@ export default function Product({product, auth} ) {
                         <p>3000mAh LiPo</p>
                     </div>
                 </div>
-            </div>
+            </div> */}
+            <CommentComponent auth={auth} productId={product.id}/>
+            <ShowCommentsComponent comments={comments} />
     </Layout>
   )
 }

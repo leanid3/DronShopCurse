@@ -20,9 +20,9 @@ class ProductFactory extends Factory
     {
         return [
             'category_id' => $this->faker->numberBetween(1, 10),
-            'brand_id' => $this->faker->numberBetween(1, 10),
+            'brend_id' => $this->faker->numberBetween(1, 10),
             'title' => $this->faker->sentence(3),
-            'status'=>$this->faker->randomElement(['в наличии', 'нет в наличии']),
+            'status' => $this->faker->randomElement(['в наличии', 'нет в наличии']),
             'description' => $this->faker->paragraph,
             'rating' => $this->faker->randomFloat(1, 0, 5),
             'price' => $this->faker->randomFloat(2, 100, 1000),

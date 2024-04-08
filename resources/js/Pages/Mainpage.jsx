@@ -4,12 +4,10 @@ import Catalog from "../Components/assets/Сatalog.jsx";
 import { Head, usePage } from "@inertiajs/react";
 export default function Mainpage({arrayProduct, auth}) {
   const slides =[
-    'https://pngimg.com/uploads/drone/drone_PNG139.png', 
-    'https://images-na.ssl-images-amazon.com/images/I/81LbQx2IA+L.png', 
+    'https://pngimg.com/uploads/drone/drone_PNG139.png',
+    'https://images-na.ssl-images-amazon.com/images/I/81LbQx2IA+L.png',
     'https://www.cined.com/content/uploads/2018/01/Mavic-Air_Flame-Red_side-2-featured.jpg'
   ]
-
-
   return (
 
         <Layout auth={auth}>
@@ -21,7 +19,7 @@ export default function Mainpage({arrayProduct, auth}) {
             <Catalog arrayProduct={arrayProduct} />
           </section>
          </Layout>
-   
+
 
   )
 }

@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\ProductGRUDController;
 use App\Http\Controllers\CartsController;
 use Inertia\Inertia;
 use App\Models\Product;
@@ -12,28 +13,35 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\RenderFormController;
 use App\Http\Controllers\searchController;
 use App\Http\Controllers\TestformController;
-use App\Models\Brand;
+use App\Models\Brend;
 
 Route::get('/', [PageController::class, 'home'])->name('home');
 Route::get('/catalog/{id}', [ProductController::class, 'showProduct'])->name('showProduct');
-
 Route::post('/createformpost', [TestformController::class, 'submitdef'])->name('indexForm');
 
 Route::get('/dashboard', function () {
     return Inertia::render('Dashboard', [
-        'radioitems' => Brand::pluck('brand')
+        'radioitems' => Brend::pluck('brend')
     ]);
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::post('/search', [searchController::class, 'search'])->name('search');
 Route::get('/answersearch', [searchController::class, 'answersearch'])->name('answersearch');
 
+
 Route::middleware('auth')->group(function () {
     Route::get('/cart', [CartsController::class, 'showCart'])->name('cart');
     Route::post('/cart/add', [CartsController::class, 'addCart'])->name('addCart');
     Route::delete('/cart/remove', [CartsController::class, 'destroyCart'])->name('destroyCart');
 
-    Route::get('/profile', [ProfileController::class,'edit'])->name('profile.edit');
+    Route::post('/catalog/post', [ProductController::class, 'createComment'])->name('comments.product');
+
+    Route::resource('product', ProductGRUDController::class)->names([
+        'create' => 'product.showCreate',
+        'store' => 'product.create'
+    ]);
+
+    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });

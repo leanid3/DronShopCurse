@@ -6,7 +6,7 @@ export default function Layout({children, auth}) {
   return (
     <>
       <Header auth={auth}/>
-      <main className="container my-20 mx-auto bg-lightgrey">
+      <main className="container my-24 mt-52 mx-auto bg-lightgrey">
         {children}
       </main>
       <Footer/>

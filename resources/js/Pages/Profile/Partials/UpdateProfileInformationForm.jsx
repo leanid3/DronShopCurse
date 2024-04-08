@@ -8,9 +8,10 @@ import { Transition } from '@headlessui/react';
 export default function UpdateProfileInformation({ mustVerifyEmail, status, className = '' }) {
     const user = usePage().props.auth.user;
 
-    const { data, setData, patch, errors, processing, recentlySuccessful } = useForm({
+    const { data, setData, patch, errors, processing, progress, recentlySuccessful } = useForm({
         name: user.name,
         email: user.email,
+        avatar: user.avatar,
     });
 
     const submit = (e) => {
@@ -83,6 +84,26 @@ export default function UpdateProfileInformation({ mustVerifyEmail, status, clas
                         )}
                     </div>
                 )}
+
+                <div>
+                    <InputLabel htmlFor="avatar" value="Avatar" />
+
+                    <TextInput
+                        id="avatar"
+                        type="file"
+                        className="mt-1 block w-full"
+                        onChange={(e) => setData('avatar', e.target.files[0])}
+                        required
+                        autoComplete="username"
+                    />
+
+                    <img className=' w-20 h-20 rounded-lg' src={user.avatar} alt={user.avatar} />
+                            {progress &&
+                                <progress value={progress.percentage} max={100}>
+                                    {progress.percentage}%
+                                </progress>}
+                    <InputError className="mt-2" message={errors.avatar} />
+                </div>
 
                 <div className="flex items-center gap-4">
                     <PrimaryButton disabled={processing}>Save</PrimaryButton>

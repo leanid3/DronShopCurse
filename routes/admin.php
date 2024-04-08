@@ -9,7 +9,7 @@ Route::controller(AuthController::class)->group(function(){
     Route::post('/login_proccess', 'login_proccess')->name('login_proccess');
 });
 
-Route::middleware('auth:admin')->group(function(){
+// Route::middleware('auth:admin')->group(function(){
 
-    Route::resource('/admin', AdminController::class)->('adminpanel');
-});
+//     Route::resource('/admin', AdminController::class)->('adminpanel');
+// });

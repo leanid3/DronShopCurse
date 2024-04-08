@@ -7,10 +7,10 @@ import TextInput from '@/Components/TextInput';
 import { Head, Link, useForm } from '@inertiajs/react';
 
 export default function Register() {
-    const { data, setData, post, processing, errors, reset } = useForm({
+    const { data, setData, post, processing, progress, errors, reset } = useForm({
         name: '',
         email: '',
-        // avatar: null,
+        avatar: null,
         password: '',
         password_confirmation: '',
     });
@@ -66,24 +66,23 @@ export default function Register() {
                     <InputError message={errors.email} className="mt-2" />
                 </div>
 
-                {/* <div className="mt-4">
+                <div className="mt-4">
                     <InputLabel htmlFor="avatar" value="Avatar" />
 
                     <TextInput
                         id="avatar"
                         type="file"
                         name="avatar"
-                        value={data.avatar}
                         className="mt-1 block w-full"
                         autoComplete="avatar"
                         onChange={(e) => setData('avatar', e.target.files[0])}
                         required
                     />
-                    {processing && (<progress value={progress.percentage} max={100}>
+                    {progress && (<progress value={progress.percentage} max={100}>
                         {progress.percentage}%
                     </progress>)}
                     <InputError message={errors.avatar} className="mt-2" />
-                </div> */}
+                </div>
 
                 <div className="mt-4">
                     <InputLabel htmlFor="password" value="Password" />

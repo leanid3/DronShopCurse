@@ -24,8 +24,13 @@ export default function Authenticated({ user, header, children }) {
                                 <NavLink href={route('dashboard')} active={route().current('dashboard')}>
                                     Dashboard
                                 </NavLink>
+
                                 <NavLink href={route('cart')} active={route().current('cart')}>
                                     Корзина
+                                </NavLink>
+
+                                <NavLink href={route('product.showCreate')}>
+                                    Создать продукт
                                 </NavLink>
                             </div>
                         </div>
@@ -39,6 +44,7 @@ export default function Authenticated({ user, header, children }) {
                                                 type="button"
                                                 className="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-gray-500 bg-white hover:text-gray-700 focus:outline-none transition ease-in-out duration-150"
                                             >
+                                                <img className=' w-10 h-10 rounded-full' src={user.avatar} alt={user.avatar} />
                                                 {user.name}
 
                                                 <svg

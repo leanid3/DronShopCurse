@@ -18,14 +18,13 @@ class PageController extends Controller
 
     public function home(Product $product)
     {
-    
-        $arrayProduct = $product->with('brand')->get();
+
+        $arrayProduct = $product->with('brend')->paginate(10);
         return Inertia::render(
             'Mainpage',
             [
-                // 'auth' => Auth::user(),
                 'arrayProduct' => $arrayProduct,
-                ]
+            ]
         );
     }
     public function cart()

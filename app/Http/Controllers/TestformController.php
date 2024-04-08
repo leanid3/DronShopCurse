@@ -17,6 +17,7 @@ class TestformController extends Controller
             'radioValue' => ['required']
         ]);
 
+
         $avatar = $request->file('avatar');
 
         $avatarName = time() . '.' . $avatar->getClientOriginalExtension();

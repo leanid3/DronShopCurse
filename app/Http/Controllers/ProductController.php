@@ -8,30 +8,45 @@ use App\Models\Product;
 use Egulias\EmailValidator\Parser\Comment;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Route;
 
 class ProductController extends Controller
 {
-    public function showProduct($id) {
-       $product = Product::with('brand', 'category')->findOrFail($id);
-        return Inertia::render( 'Product', [
-            'product' => $product
-        ]);
-    }
+    public function showProduct($id)
+    {
+        $product = Product::with('brend', 'category')->findOrFail($id);
 
-    public function addComments(Request $request){
-        $data = $request->validate([
-            'raiting' => ['required', 'integer','min:0', 'max:10',],
-            'comment'=> ['required', 'min:5']
-        ]);
-    }
-
-    public function showComments(){
-
-        $comments = Comments::with('user')->get();
-       
+        $comment = Comments::where('product_id', $id)->with('product', 'user')->get();
         return Inertia::render('Product', [
-            'comments' =>$comments,
+            'product' => $product,
+            'comments' => $comment
         ]);
+    }
+
+    public function createComment(Request $request)
+    {
+
+        if (!Auth::check()) {
+            return Redirect::back()->withErrors([
+                'userNotAuth' => 'войдите в аккаунт, чтобы добавить комментарий'
+            ]);
+        }
+
+        $request->validate([
+            'comment' => ['required', 'min:5'],
+            'product_id' => ['required', 'exists:products,id'],
+
+        ]);
+
+        $user = Auth::user()->id;
+
+        Comments::create([
+            'comment' => $request->comment,
+            'product_id' => $request->product_id,
+            'user_id' => $user,
+        ]);
+
+        return Redirect::back();
     }
 }
