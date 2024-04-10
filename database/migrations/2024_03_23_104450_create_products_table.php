@@ -19,7 +19,7 @@ return new class extends Migration
             $table->text('description');
             $table->float('rating');
             $table->integer('price');
-            $table->text('status');
+            $table->enum('status', ['в наличии', 'нет в наличии'])->default('в наличии');
             $table->text('image')->nullable();
 
             $table->timestamps();

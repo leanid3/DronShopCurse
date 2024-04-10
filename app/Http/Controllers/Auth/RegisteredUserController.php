@@ -37,15 +37,15 @@ class RegisteredUserController extends Controller
             'password' => ['required', 'min:6', 'confirmed', Rules\Password::defaults()],
         ]);
 
-        $avatar = $request->file('avatar');
-        $avatarName = time().'.'.$avatar->getClientOriginalExtension();
-        $avatar->storeAs('public/uploads', $avatarName);
+        $avatar = $request->file('avatar')->store('uploads','public');
+        // $avatarName = time().'.'.$avatar->getClientOriginalExtension();
+        // $avatar->storeAs('public/uploads', $avatarName);
 
         $user = User::create([
             'name' => $request->name,
             'email' => $request->email,
             'password' => Hash::make($request->password),
-            'avatar' => 'storage/uploads/'. $avatarName,
+            'avatar' => '/storage/'. $avatar,
         ]);
 
         event(new Registered($user));

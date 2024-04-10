@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\Admin\ProductRequest;
 use App\Http\Requests\ProfileUpdateRequest;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Http\RedirectResponse;
@@ -30,31 +31,20 @@ class ProfileController extends Controller
      */
     public function update(ProfileUpdateRequest $request): RedirectResponse
     {
+        $request->validated();
+
         $user = $request->user();
 
-        // Обработка загрузки новой аватарки
+        $user->name = $request->name;
+        $user->email = $request->email;
+
         if ($request->hasFile('avatar')) {
-            // Удаляем старый файл аватарки, если он есть
-            if ($user->avatar) {
-                Storage::delete($user->avatar);
-            }
-
-            // Сохраняем новый файл аватарки
             $avatarPath = $request->file('avatar')->store('uploads', 'public');
-            $user->avatar = $avatarPath;
+            $user->avatar = '/storage/' . $avatarPath;
         }
-
-        // Обновление остальных данных профиля
-        $user->fill($request->validated());
-
-        // Проверяем, изменился ли email, и сбрасываем верификацию
-        if ($user->isDirty('email')) {
-            $user->email_verified_at = null;
-        }
-
         $user->save();
 
-        return Redirect::route('profile.edit');
+        return Redirect::back();
     }
 
     /**

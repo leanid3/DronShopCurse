@@ -5,17 +5,16 @@ import { Link, useForm, usePage } from "@inertiajs/react";
 export default function Cardproduct({product}) {
 
 
-    // const [imageLoad, setImageLoad] = useState(true)
+    const [imageLoad, setImageLoad] = useState(true)
 
     const {post} = useForm({
         product_id: product.id
     })
 
-    // const handleImageLoad = () => {
-    //     console.log('функ загрузки отрпботала')
-    //     setImageLoad(false)
-    // }
-
+    const handleImageLoad = () => {
+        console.log('функ загрузки отрпботала')
+        setImageLoad(false)
+    }
     const addToCart = (e) => {
         e.preventDefault()
         post(route('addCart'))
@@ -24,14 +23,15 @@ export default function Cardproduct({product}) {
 
       <article key={product.id} className='flex flex-col border border-darkblue rounded-md shadow-lg hover:-translate-y-1 transition-transform duration-300'>
         {product.image &&
-            <img  src={product.image} alt={product.id}  className='rounded-t-lg'/>
+            <img  src={product.image} alt={product.title}  className='rounded-t-lg'/>
         }
+
         {/* {imageLoad ? (
             <div className="w-full mt-5 animate-pulse flex items-center justify-center">
                 Загрузка...
             </div>
             ) : (
-            <img  src={product.image} alt={product.id} onLoad={handleImageLoad}   className='rounded-t-lg'/>
+                <img  src={product.image} alt={product.id} onLoad={handleImageLoad}   className='rounded-t-lg'/>
         )} */}
 
         <div className="p-4 flex flex-col justify-between flex-1">

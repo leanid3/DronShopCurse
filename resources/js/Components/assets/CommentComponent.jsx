@@ -25,12 +25,11 @@ export default function CommentComponent({auth, productId}) {
             }
         })
     }
-
     return (
     <div className=" flex  justify-center">
         <div className="flex flex-col w-80 p-5 border-2 border-red-600">
             <div>
-                <img className="w-15 h-15 rounded-full" src={auth.user.avatar} alt={auth.user.avatar} />
+                <img className="w-15 h-15 rounded-full" src={auth.user.avatar} alt={auth.user.title} />
 
                 <span>{auth.user.name}</span>
             </div>

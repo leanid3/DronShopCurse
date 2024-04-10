@@ -10,7 +10,7 @@ export default function ShowCommentsComponent({comments}) {
         <div key={index} className="bg-lightgrey rounded-lg p-3  flex flex-col justify-center items-center md:items-start shadow-lg mb-4">
             <div className="flex flex-row justify-center mr-2">
                 <img
-                   alt={comment.user.avatar}
+                   alt={comment.user.title}
                    width="48"
                    height="48"
                    className="rounded-full w-10 h-10 mr-4 shadow-lg mb-4"

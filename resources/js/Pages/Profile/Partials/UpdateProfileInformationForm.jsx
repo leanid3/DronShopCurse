@@ -93,7 +93,7 @@ export default function UpdateProfileInformation({ mustVerifyEmail, status, clas
                         type="file"
                         className="mt-1 block w-full"
                         onChange={(e) => setData('avatar', e.target.files[0])}
-                        required
+                        
                         autoComplete="username"
                     />
 

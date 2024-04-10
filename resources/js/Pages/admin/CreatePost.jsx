@@ -8,7 +8,7 @@ import React, { useState } from 'react'
 
 export default function CreatePost({auth}) {
   const [message, setMessage] = useState('')
-  const {brends, categories} = usePage().props
+  const {brends, categories, status} = usePage().props
   const {data, setData, post, errors, processing, progress} = useForm({
     postBrend: 0,
     postCategory: '',
@@ -23,7 +23,6 @@ export default function CreatePost({auth}) {
   const hundleTarget =(e) =>{
 
     const {name,  type} = e.target
-    console.log(`type: ${type}`)
     let res = 0
 
     switch(type){
@@ -43,7 +42,6 @@ export default function CreatePost({auth}) {
     setData(name, res)
 
   }
-
   const Sumbit = (e) =>{
     e.preventDefault()
     post(route('product.create'),{
@@ -171,7 +169,7 @@ export default function CreatePost({auth}) {
                         name='postResRadio'
                         value='в наличии'
                         checked={data.postResRadio === 'в наличии'}
-                        onChange={hundleTarget}
+                        onChange={e=> setData('postResRadio', e.target.value)}
                       />
 
                       <span>в наличии</span>
@@ -183,7 +181,7 @@ export default function CreatePost({auth}) {
                         name='postResRadio'
                         value='нет в наличии'
                         checked={data.postResRadio === 'нет в наличии'}
-                        onChange={hundleTarget}
+                        onChange={e=> setData('postResRadio', e.target.value)}
                       />
 
                       <span>нет в наличии</span>

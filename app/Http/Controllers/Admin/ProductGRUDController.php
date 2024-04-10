@@ -27,6 +27,7 @@ class ProductGRUDController extends Controller
         return Inertia::render('Admin/CreatePost', [
             'categories' => Category::select('categoryName', 'id')->get(),
             'brends' => Brend::select('brend', 'id')->get(),
+            'status' => ['в наличии', 'нет в наличии']
         ]);
     }
 
@@ -36,22 +37,23 @@ class ProductGRUDController extends Controller
     public function store(ProductRequest $request)
     {
 
-        // dd($request);
         $request->validated();
 
-        $image = $request->file('postImage');
-        $imageName = time() . '.' . $image->getClientOriginalName();
-        $image->storeAs('public/productImage');
+        $image = $request->file('postImage')->store('productImage', 'public');
+
+        // $image = $request->file('postImage');
+        // $imageName = time() . '.' . $image->getClientOriginalExtension();
+        // $image->storeAs('public/productImage',$imageName);
 
         Product::create([
-            'category_id'=> $request->postCategory,
-            'brend_id'=> $request->postBrend,
-            'tilte'=>$request->postTitle,
-            'description'=>$request->postDescription,
-            'rating'=>$request->postRating,
-            'price'=>$request->postPrice,
-            'status'=>"в наличии",
-            'image'=> 'storage/productImage/'.$imageName
+            'category_id' => $request->postCategory,
+            'brend_id' => $request->postBrend,
+            'title' => $request->postTitle,
+            'description' => $request->postDescription,
+            'rating' => $request->postRating,
+            'price' => $request->postPrice,
+            'status' => $request->postResRadio,
+            'image' =>  '/storage/'.$image
         ]);
     }
 

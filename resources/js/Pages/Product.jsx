@@ -1,7 +1,7 @@
 import ShowCommentsComponent from '@/Components/assets/ShowCommentsComponent'
 import Layout from '../Layouts/Layout'
 import { Head } from '@inertiajs/react'
-import React from 'react'
+import React, { useState } from 'react'
 import CommentComponent from '@/Components/assets/CommentComponent'
 
 export default function Product({product, auth, comments} ) {
@@ -10,7 +10,7 @@ export default function Product({product, auth, comments} ) {
             <Head title={product.title }></Head>
             <div class="grid grid-cols-2 gap-4 p-5">
                 <div>
-                    <img src={product.image} alt={product.image} class="w-full"/>
+                    <img src={product.image} alt={product.title} class=" w-full h-full"/>
                 </div>
                 <div>
                     <h1 class="text-3xl font-bold mb-2">{product.title}</h1>
@@ -50,7 +50,11 @@ export default function Product({product, auth, comments} ) {
                     </div>
                 </div>
             </div> */}
-            <CommentComponent auth={auth} productId={product.id}/>
+            {!auth.user
+                ? <div>комментарий может оставить только авторизированный пользователь</div>
+                : <CommentComponent auth={auth} productId={product.id}/>
+            }
+
             <ShowCommentsComponent comments={comments} />
     </Layout>
   )

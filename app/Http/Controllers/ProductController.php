@@ -17,10 +17,10 @@ class ProductController extends Controller
     {
         $product = Product::with('brend', 'category')->findOrFail($id);
 
-        $comment = Comments::where('product_id', $id)->with('product', 'user')->get();
+        $comments = Comments::where('product_id', $id)->with('product', 'user')->get();
         return Inertia::render('Product', [
             'product' => $product,
-            'comments' => $comment
+            'comments' => $comments
         ]);
     }
 

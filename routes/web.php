@@ -17,7 +17,6 @@ use App\Models\Brend;
 
 Route::get('/', [PageController::class, 'home'])->name('home');
 Route::get('/catalog/{id}', [ProductController::class, 'showProduct'])->name('showProduct');
-Route::post('/createformpost', [TestformController::class, 'submitdef'])->name('indexForm');
 
 Route::get('/dashboard', function () {
     return Inertia::render('Dashboard', [
@@ -30,6 +29,8 @@ Route::get('/answersearch', [searchController::class, 'answersearch'])->name('an
 
 
 Route::middleware('auth')->group(function () {
+    Route::post('/createformpost', [TestformController::class, 'submitdef'])->name('indexForm');
+
     Route::get('/cart', [CartsController::class, 'showCart'])->name('cart');
     Route::post('/cart/add', [CartsController::class, 'addCart'])->name('addCart');
     Route::delete('/cart/remove', [CartsController::class, 'destroyCart'])->name('destroyCart');
@@ -42,7 +43,7 @@ Route::middleware('auth')->group(function () {
     ]);
 
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
-    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+    Route::post('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 

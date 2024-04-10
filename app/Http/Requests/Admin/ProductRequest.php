@@ -28,7 +28,7 @@ class ProductRequest extends FormRequest
             "postDescription" => ['required', 'min:5'],
             "postRating" => ['required', 'integer', 'min:0', 'max:5'],
             "postPrice" => ['required', 'integer'],
-            // "postResRadio" => ['required'],
+            "postResRadio" => ['required'],
             "postImage" => ['required', 'image', 'mimes:png,jpg', 'max:2048'],
         ];
     }
