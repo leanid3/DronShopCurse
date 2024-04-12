@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Controllers\Controller;
+use Inertia\Inertia;
+use App\Models\Admin;
 use App\Models\Product;
 use Illuminate\Http\Request;
-use Inertia\Inertia;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 
 class AdminController extends Controller
 {
@@ -14,10 +16,12 @@ class AdminController extends Controller
      */
     public function index()
     {
-        $product = Product::orderBy('created_at', 'DESC')->paginate(10);
-        return Inertia::render('adminMainpage', [
-            'product' => $product, 
-        ]);
+        $auth = Auth::guard('admin')->user();
+        return inertia::render('Admin/AdminMainpage', ['auth' => $auth]);
+        // $product = Product::orderBy('created_at', 'DESC')->paginate(10);
+        // return Inertia::render('adminMainpage', [
+        //     'product' => $product,
+        // ]);
     }
 
     /**

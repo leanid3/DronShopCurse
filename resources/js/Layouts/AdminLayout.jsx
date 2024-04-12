@@ -5,10 +5,9 @@ import NavLink from "@/Components/NavLink";
 import ResponsiveNavLink from "@/Components/ResponsiveNavLink";
 import { Link } from "@inertiajs/react";
 
-export default function Authenticated({ user, header, children }) {
+export default function AdminLayout({user, header, children }) {
     const [showingNavigationDropdown, setShowingNavigationDropdown] =
-        useState(false);
-
+    useState(false);
     return (
         <div className="min-h-screen bg-gray-100">
             <nav className="bg-white border-b border-gray-100">
@@ -54,12 +53,12 @@ export default function Authenticated({ user, header, children }) {
                                                 type="button"
                                                 className="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-gray-500 bg-white hover:text-gray-700 focus:outline-none transition ease-in-out duration-150"
                                             >
-                                                {user.avatar &&
+                                                {/* {user.avatar&&
                                                 <img
                                                     className=" w-10 h-10 rounded-full"
                                                     src={user.avatar}
                                                     alt={user.avatar}
-                                                />}
+                                                />} */}
                                                 {user.name}
 
                                                 <svg

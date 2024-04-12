@@ -8,27 +8,30 @@ export default function Header({ auth }) {
     return (
         <header className="flex flex-wrap items-center justify-between bg-gradient-to-r from-lightblue to-blue-500 w-full md:w-screen p-4 z-10">
             <Link
-                to="/"
+                href={route("home")}
                 className="text-lightgrey text-center md:text-left text-xl md:text-3xl font-bold"
             >
                 DronShop
             </Link>
             <InputSearch />
             <div className="flex items-center gap-3 text-lightgrey text-center md:text-left">
-                <Link to="/cart" className="flex items-center">
+                <Link href={route("cart")} className="flex items-center">
                     <HiOutlineShoppingCart className="text-xl md:text-3xl" />
                     <span className="hidden lg:block">Корзина</span>
                 </Link>
-                <Link to="/favorites" className="flex items-center">
+                <Link href={route("cart")} className="flex items-center">
                     <BsBookmarkStar className="text-xl md:text-3xl" />
-                    <span className="hidden lg:block">Избранное</span>
+                    <span className="hidden lg:block">Обратная связь</span>
                 </Link>
-                <Link to="/sales" className="flex items-center">
+                <Link href={route("cart")} className="flex items-center">
                     <FaPercent className="text-xl md:text-3xl" />
-                    <span className="hidden lg:block">Акция</span>
+                    <span className="hidden lg:block">О нас</span>
                 </Link>
                 {auth && auth.user ? (
-                    <Link to="/dashboard" className="flex items-center">
+                    <Link
+                        href={route("dashboard")}
+                        className="flex items-center"
+                    >
                         <img
                             className="w-8 h-8 rounded-full"
                             src={auth.user.avatar}
@@ -39,7 +42,10 @@ export default function Header({ auth }) {
                         </span>
                     </Link>
                 ) : (
-                    <Link to="/register" className="flex items-center">
+                    <Link
+                        href={route("register")}
+                        className="flex items-center"
+                    >
                         <HiOutlineUser className="text-xl md:text-3xl" />
                         <span>Регистрация</span>
                     </Link>

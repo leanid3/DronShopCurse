@@ -23,8 +23,8 @@ class DatabaseSeeder extends Seeder
         Product::factory(100)->create();
         Admin::factory(1)->create([
             'name' => 'Admin',
-            'email' => 'garavil313@gmail.com',
-            'password' => bcrypt('12345'),
+            'email' => 'garavil1313@gmail.com',
+            'password' => bcrypt('Ravil1313'),
         ]);
     }
 }

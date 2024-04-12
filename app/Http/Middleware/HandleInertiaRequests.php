@@ -34,7 +34,7 @@ class HandleInertiaRequests extends Middleware
         // dd($request->user());
         return array_merge(parent::share($request), [
             'auth' => [
-                'user' => $request->user(),
+                'user' => $request->guard('web')->user(),
             ],
         ]);
     }

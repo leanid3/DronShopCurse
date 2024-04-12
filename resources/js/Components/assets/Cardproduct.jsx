@@ -2,78 +2,52 @@ import { HiOutlineShoppingCart } from "react-icons/hi";
 import { CgCheckO, CgCloseO } from "react-icons/cg";
 import { useState } from "react";
 import { Link, useForm, usePage } from "@inertiajs/react";
+import AddCartButton from "../AddCartButton";
 export default function Cardproduct({ product }) {
     const [imageLoad, setImageLoad] = useState(true);
 
-    const { post } = useForm({
-        product_id: product.id,
-    });
-
     const handleImageLoad = () => {
-        console.log("функ загрузки отрпботала");
         setImageLoad(false);
     };
-    const addToCart = (e) => {
-        e.preventDefault();
-        post(route("addCart"));
-    };
+
     return (
-        <article
-            key={product.id}
-            className="flex flex-col border border-darkblue rounded-md shadow-lg hover:-translate-y-1 transition-transform duration-300"
-        >
-            {product.image && (
+        <article className="flex flex-col border border-gray-200 rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition duration-300">
+            <Link href={route("showProduct", { id: product.id })}>
                 <img
                     src={product.image}
                     alt={product.title}
-                    className="rounded-t-lg"
+                    className="w-full h-48 object-cover"
+                    onLoad={handleImageLoad}
                 />
-            )}
-
-            {/* {imageLoad ? (
-            <div className="w-full mt-5 animate-pulse flex items-center justify-center">
-                Загрузка...
-            </div>
-            ) : (
-                <img  src={product.image} alt={product.id} onLoad={handleImageLoad}   className='rounded-t-lg'/>
-        )} */}
-
-            <div className="p-4 flex flex-col justify-between flex-1">
-                <div>
-                    <p className="text-sm text-gray-600">
-                        {product.brend.brend}
+            </Link>
+            <div className="p-4">
+                <p className="text-sm text-gray-600">{product.brend.brend}</p>
+                <Link
+                    href={route("showProduct", { id: product.id })}
+                    className="text-lg font-semibold text-gray-800 hover:underline"
+                >
+                    {product.title}
+                </Link>
+                <div className="flex items-center mt-2">
+                    <p className="text-lg text-yellow-600 mr-2">
+                        {product.rating}
                     </p>
-
-                    <Link
-                        href={route("showProduct", { id: product.id })}
-                        className="text-lg mb-2 hover:outline font-semibold"
-                    >
-                        {product.title}
-                    </Link>
-
-                    <p className=" text-dar-400 text-lg">{product.rating}</p>
-
-                    <p className=" text-darkblue text-lg">
+                    <p className="text-lg text-darkblue">
                         {product.price} руб.
                     </p>
-
-                    <p
-                        className={`text-sm flex gap-2 items-center font-semibold ${product.status === "в наличии" ? "text-green-500" : "text-red-500"}`}
-                    >
-                        {product.status === "в наличии" ? (
-                            <CgCheckO />
-                        ) : (
-                            <CgCloseO />
-                        )}
-                        {product.status}
-                    </p>
                 </div>
-                <button
-                    onClick={addToCart}
-                    className="flex gap-2 item-center mt-4 px-4 py-2 text-lightgrey font-semibold rounded-md shadow-md bg-darkblue hover:bg-opacity-80 focus:outline-none"
+                <p
+                    className={`text-sm flex items-center font-semibold ${product.status === "в наличии" ? "text-green-500" : "text-red-500"}`}
                 >
-                    <HiOutlineShoppingCart className="text-2xl pt-1" />В корзину
-                </button>
+                    {product.status === "в наличии" ? (
+                        <CgCheckO className="mr-1" />
+                    ) : (
+                        <CgCloseO className="mr-1" />
+                    )}
+                    {product.status}
+                </p>
+
+                <AddCartButton productId={product.id} />
             </div>
         </article>
     );

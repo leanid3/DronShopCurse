@@ -15,9 +15,11 @@ class ProductGRUDController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
-    {
-    }
+    
+    // public function index()
+    // {
+    //     inertia()
+    // }
 
     /**
      * Show the form for creating a new resource.

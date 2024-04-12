@@ -3,6 +3,7 @@ import Layout from "../Layouts/Layout";
 import { Head } from "@inertiajs/react";
 import React, { useState } from "react";
 import CommentComponent from "@/Components/assets/CommentComponent";
+import AddCartButton from "@/Components/AddCartButton";
 
 export default function Product({ product, auth, comments }) {
     return (
@@ -49,6 +50,7 @@ export default function Product({ product, auth, comments }) {
                                 ${product.price}
                             </p>
                         </div>
+                        <AddCartButton productId={product.id} />
                     </div>
                 </div>
                 {!auth.user ? (
