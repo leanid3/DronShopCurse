@@ -1,60 +1,68 @@
-import { Link } from "@inertiajs/react"
+import { Link } from "@inertiajs/react";
+import NavLink from "../NavLink";
 
 export default function Footer() {
-  return (
-    <footer className=" mt-5 bg-gradient-to-r text-lightgrey to-darkblue to-40$ from-lightblue to-50% ">
-        <div className="flex *:flex *:flex-col justify-evenly gap-7 lg:gap-0  mx-32 py-10">
-
-            <div>
-                <span className="font-bold">Покупателям</span>
-                <ul className="*:mt-2">
-                    <li><Link>О компании</Link></li>
-                    <li><Link>Вакансии</Link></li>
-                    <li><Link>Доставка</Link></li>
-                    <li><Link>Для прессы</Link></li>
-                    <li><Link>Новости</Link></li>
-                </ul>
+    return (
+        <footer className="bg-darkblue text-lightgrey p-4">
+            <div className="container mx-auto">
+                <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+                    <div>
+                        <h3 className="text-lg font-semibold mb-2 flex">
+                            О нас
+                        </h3>
+                        <p className="text-sm flex-grow">
+                            Мы компания, специализирующаяся на продаже
+                            квадракоптеров. Наш ассортимент включает в себя
+                            широкий выбор квадрокоптеров различных марок,
+                            моделей и ценовых категорий. Мы стремимся
+                            предоставить нашим клиентам высококачественные
+                            продукты и отличный сервис.
+                        </p>
+                    </div>
+                    <div>
+                        <h3 className="text-lg font-semibold mb-2">
+                            Связаться с нами
+                        </h3>
+                        <p>example@example.com</p>
+                        <p>+1234567890</p>
+                    </div>
+                    <div>
+                        <h3 className="text-lg font-semibold mb-2">Ссылки</h3>
+                        <ul>
+                            <li>
+                                <NavLink href={route("home")}>Главная</NavLink>
+                            </li>
+                            <li>
+                                <NavLink href="/about">О нас</NavLink>
+                            </li>
+                            <li>
+                                <NavLink href="/products">Продукты</NavLink>
+                            </li>
+                            <li>
+                                <NavLink href="/contact">Контакты</NavLink>
+                            </li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h3 className="text-lg font-semibold mb-2">
+                            Подписаться на рассылку
+                        </h3>
+                        <form>
+                            <input
+                                type="email"
+                                placeholder="Введите ваш email"
+                                className="w-full py-2 px-3 rounded bg-darkblue text-lightgrey "
+                            />
+                            <button
+                                type="submit"
+                                className="mt-2 py-2 px-4 bg-blue-500 hover:bg-blue-600 rounded text-lightgrey "
+                            >
+                                Подписаться
+                            </button>
+                        </form>
+                    </div>
+                </div>
             </div>
-
-            <div>
-                <span className="font-bold mb-2">Покупателям</span>
-                <ul className=" *:mt-2 gap-3">
-                    <li><Link>Сервисные центры</Link></li>
-                    <li><Link>Услуги</Link></li>
-                    <li><Link>Корпоративным клиентам</Link></li>
-                    <li><Link>Аренда помещений</Link></li>
-                    <li><Link>Для вебмастеров</Link></li>
-                    <li><Link>Правила продажи</Link></li>
-                    <li><Link>Обзоры</Link></li>
-                </ul>
-            </div>
-            <div>
-                <span className="font-bold">Партнёрам</span>
-                <ul className="*:mt-2">
-                    <li><Link>Сервисные центры</Link></li>
-                    <li><Link>Поставщикам упаковки</Link></li>
-                    <li><Link>Поддержка бизнеса</Link></li>
-                    <li><Link>Создание сайтов</Link></li>
-                    <li><Link>Тендеры на перевозки</Link></li>
-                    <li><Link>Открыть пункт выдачи</Link></li>
-                </ul>
-            </div>
-            <div>
-                <span className=" font-bold">Контакты</span>
-                <ul className="*:mt-2">
-                    <li><p>Телефон: <Link>8 800 234 1000</Link></p></li>
-                    <li><p>Екатеринбург, ул. Черняховского, 86/8</p></li>
-                    <li><p>Москва, Новоданиловская набережная, д.4, оф.31</p></li>
-                    <li><Link>Все контакты</Link></li>
-                </ul>
-            </div>
-            
-            
-          
-            
-        </div>
-
-
-    </footer>
-  )
+        </footer>
+    );
 }
