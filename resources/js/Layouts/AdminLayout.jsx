@@ -16,7 +16,7 @@ export default function AdminLayout({user, header, children }) {
                         <div className="flex">
                             <div className="shrink-0 flex items-center">
                                 <Link
-                                    href={route("home")}
+                                    href={route("adminMainPage")}
                                     className=" text-darkblue hover:text-darkblue/40 text-center md:text-left text-xl md:text-3xl font-bold"
                                 >
                                     DronShop
@@ -25,20 +25,16 @@ export default function AdminLayout({user, header, children }) {
 
                             <div className="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
                                 <NavLink
-                                    href={route("dashboard")}
-                                    active={route().current("dashboard")}
+                                    href={route("adminMainPage")}
+                                    active={route().current("adminMainPage")}
                                 >
                                     Dashboard
                                 </NavLink>
 
-                                <NavLink
-                                    href={route("cart")}
-                                    active={route().current("cart")}
-                                >
-                                    Корзина
+                                <NavLink href={route("product.index")}>
+                                   CRUD prod
                                 </NavLink>
-
-                                <NavLink href={route("product.showCreate")}>
+                                <NavLink href={route("product.create")}>
                                     Создать продукт
                                 </NavLink>
                             </div>

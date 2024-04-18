@@ -38,10 +38,6 @@ export default function Authenticated({ user, header, children }) {
                                 >
                                     Корзина
                                 </NavLink>
-
-                                <NavLink href={route("product.showCreate")}>
-                                    Создать продукт
-                                </NavLink>
                             </div>
                         </div>
 

@@ -2,7 +2,7 @@ import InputError from "@/Components/InputError";
 import InputLabel from "@/Components/InputLabel";
 import PrimaryButton from "@/Components/PrimaryButton";
 import TextInput from "@/Components/TextInput";
-import Authenticated from "@/Layouts/AuthenticatedLayout";
+import AdminLayout from "@/Layouts/AdminLayout";
 import { Head, useForm, usePage } from "@inertiajs/react";
 import React, { useState } from "react";
 
@@ -41,7 +41,7 @@ export default function CreatePost({ auth }) {
     };
     const Sumbit = (e) => {
         e.preventDefault();
-        post(route("product.create"), {
+        post(route("product.store"), {
             onSuccess: () => {
                 setMessage("Продукт добавлен");
             },
@@ -52,7 +52,7 @@ export default function CreatePost({ auth }) {
         });
     };
     return (
-        <Authenticated user={auth}>
+        <AdminLayout user={auth}>
             <Head title="Cоздания товара" />
             <main className="mx-auto my-14 container flex flex-col items-center">
                 <form
@@ -109,6 +109,7 @@ export default function CreatePost({ auth }) {
                         <InputLabel
                             htmlFor="postTitle"
                             value="Название товара:"
+                            className='max-w-full'
                         />
 
                         <TextInput
@@ -129,7 +130,9 @@ export default function CreatePost({ auth }) {
                             value="Описание товара:"
                         />
 
-                        <TextInput
+                        <textarea
+                            cols={30}
+                            rows={5}
                             id="postDescription"
                             name="postDescription"
                             value={data.postDescription}
@@ -148,6 +151,8 @@ export default function CreatePost({ auth }) {
                             type="number"
                             id="postRating"
                             name="postRating"
+                            min={0}
+                            max={5}
                             value={data.postRating}
                             onChange={hundleTarget}
                         />
@@ -164,6 +169,7 @@ export default function CreatePost({ auth }) {
                             type="number"
                             id="postPrice"
                             name="postPrice"
+                            min={0}
                             value={data.postPrice}
                             onChange={hundleTarget}
                         />
@@ -244,6 +250,6 @@ export default function CreatePost({ auth }) {
                     {message && <div className="text-red-500">{message}</div>}
                 </form>
             </main>
-        </Authenticated>
+        </AdminLayout>
     );
 }
