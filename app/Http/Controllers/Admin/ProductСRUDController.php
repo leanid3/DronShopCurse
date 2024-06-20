@@ -89,31 +89,28 @@ class ProductСRUDController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(ProductRequest $request, )
+    public function update(ProductRequest $request, Product $product)
     {
-        $request->validated();
+        $validatedData = $request->validated();
 
-        if ($request->hasFile('postImage')) {
-            $imagePath =  $request->file('postImage')->store('productImage', 'public');
+        // Если есть новое изображение, сохраняем его и удаляем старое
+        if ($request->hasFile('image')) {
+            $newImagePath = $request->file('image')->store('image', 'public');
+
+            // Удаляем старое изображение, если оно есть
             if ($product->image) {
-                Storage::delete($product->image);
+                Storage::disk('public')->delete($product->image);
             }
-            $product->image = $imagePath;
-        };
-        dd($product->exists);
-        $product->update([
-            'title' => $request->postTitle,
-            'category_id' => $request->postCategory,
-            'brend_id' => $request->postBrend,
-            'description' => $request->postDescription,
-            'rating' => $request->postRating,
-            'price' => $request->postPrice,
-            'status' => $request->postResRadio,
-            'image' => '/' . $imagePath,
-        ]);
 
+            // Обновляем путь к изображению в данных продукта
+            $validatedData['image'] = $newImagePath;
+        }
+
+        // Обновляем данные продукта
+        $product->update($validatedData);
+
+        // Перенаправляем на главную страницу админа
         return Redirect::route('adminMainPage');
-//        dd($request);
     }
 
     /**

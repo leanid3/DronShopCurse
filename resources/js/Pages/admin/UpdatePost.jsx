@@ -11,16 +11,16 @@ export default function UpdatePost({auth, product}) {
     const [message, setMessage] = useState("");
     const { brends, categories, status } = usePage().props;
     const { data, setData, post, errors, processing, progress } = useForm({
-            postBrend: product.brend.id,
-        postCategory: product.category.id,
-        postTitle: product.title,
-        postDescription: product.description,
-        postRating: product.rating,
-        postPrice: product.price,
-        postResRadio: product.status,
-        postImage:  product.image,
+        brend_id: product.brend.id,
+        category_id: product.category.id,
+        title: product.title,
+        description: product.description,
+        rating: product.rating,
+        price: product.price,
+        status: product.status,
+        image:  product.image,
     });
-
+    console.log(product)
     const hundleTarget = (e) => {
         const { name, type } = e.target;
         let res = 0;
@@ -65,32 +65,32 @@ export default function UpdatePost({auth, product}) {
                         Форма создания товара
                     </h2>
                     <ul>
-                        <InputLabel value="Бренды:" htmlFor="postBrend" />
+                        <InputLabel value="Бренды:" htmlFor="brend_id" />
 
                         {brends.map(({ brend, id }) => (
                             <li className="flex space-x-3" key={id}>
                                 <input
-                                    id={`postBrend-${id}`}
-                                    name="postBrend"
+                                    id={`brend_id-${id}`}
+                                    name="brend_id"
                                     type="radio"
                                     value={id}
-                                    checked={data.postBrend === id}
+                                    checked={data.brend_id === id}
                                     onChange={hundleTarget}
                                 />
-                                <label htmlFor={`postBrend-${id}`}>
+                                <label htmlFor={`brend_id-${id}`}>
                                     {brend}
                                 </label>
                             </li>
                         ))}
 
-                        <InputError message={errors.postBrend} />
+                        <InputError message={errors.brend_id} />
                     </ul>
 
                     <div>
                         <InputLabel value="Категории:" />
                         <select
-                            name="postCategory"
-                            value={data.postCategory}
+                            name="category_id"
+                            value={data.category_id}
                             onChange={hundleTarget}
                         >
                             <option value="">Выберете опцию</option>
@@ -104,89 +104,89 @@ export default function UpdatePost({auth, product}) {
                             })}
                         </select>
 
-                        <InputError message={errors.postCategory} />
+                        <InputError message={errors.category_id} />
                     </div>
 
                     <div>
                         <InputLabel
-                            htmlFor="postTitle"
+                            htmlFor="title"
                             value="Название товара:"
                         />
 
                         <TextInput
-                            id="postTitle"
-                            name="postTitle"
-                            value={data.postTitle}
+                            id="title"
+                            name="title"
+                            value={data.title}
                             onChange={hundleTarget}
                         />
 
-                        {errors.postTitle && (
-                            <InputError message={errors.postTitle} />
+                        {errors.title && (
+                            <InputError message={errors.title} />
                         )}
                     </div>
 
                     <div>
                         <InputLabel
-                            htmlFor="postDescription"
+                            htmlFor="description"
                             value="Описание товара:"
                         />
 
                         <TextInput
-                            id="postDescription"
-                            name="postDescription"
-                            value={data.postDescription}
+                            id="description"
+                            name="description"
+                            value={data.description}
                             onChange={hundleTarget}
                         />
 
-                        {errors.postDescription && (
-                            <InputError message={errors.postDescription} />
+                        {errors.description && (
+                            <InputError message={errors.description} />
                         )}
                     </div>
 
                     <div>
-                        <InputLabel htmlFor="postRating" value="Рейтинг:" />
+                        <InputLabel htmlFor="rating" value="Рейтинг:" />
 
                         <TextInput
                             type="number"
-                            id="postRating"
-                            name="postRating"
-                            value={data.postRating}
+                            id="rating"
+                            name="rating"
+                            value={data.rating}
                             onChange={hundleTarget}
                         />
 
-                        {errors.postRating && (
-                            <InputError message={errors.postRating} />
+                        {errors.rating && (
+                            <InputError message={errors.rating} />
                         )}
                     </div>
 
                     <div>
-                        <InputLabel htmlFor="postPrice" value="Цена:" />
+                        <InputLabel htmlFor="price" value="Цена:" />
 
                         <TextInput
                             type="number"
-                            id="postPrice"
-                            name="postPrice"
-                            value={data.postPrice}
+                            id="price"
+                            name="price"
+                            value={data.price}
                             onChange={hundleTarget}
                         />
 
-                        {errors.postPrice && (
-                            <InputError message={errors.postPrice} />
+                        {errors.price && (
+                            <InputError message={errors.price} />
                         )}
                     </div>
 
                     <div>
-                        <InputLabel htmlFor="postResRadio" value="Статус:" />
+                        <InputLabel htmlFor="status" value="Статус:" />
 
                         <div className="flex flex-col space-y-2">
                             <label>
                                 <input
                                     type="radio"
-                                    name="postResRadio"
+                                    name="status"
                                     value="в наличии"
-                                    checked={data.postResRadio === "в наличии"}
+                                    checked={data.status === "в наличии"}
                                     onChange={(e) =>
-                                        setData("postResRadio", e.target.value)
+                                        setData("status", e.target.value)
                                     }
                                 />
 
@@ -196,13 +196,13 @@ export default function UpdatePost({auth, product}) {
                             <label>
                                 <input
                                     type="radio"
-                                    name="postResRadio"
+                                    name="status"
                                     value="нет в наличии"
                                     checked={
-                                        data.postResRadio === "нет в наличии"
+                                        data.status === "нет в наличии"
                                     }
                                     onChange={(e) =>
-                                        setData("postResRadio", e.target.value)
+                                        setData("status", e.target.value)
                                     }
                                 />
 
@@ -210,8 +210,8 @@ export default function UpdatePost({auth, product}) {
                             </label>
                         </div>
 
-                        {errors.postResRadio && (
-                            <InputError message={errors.postResRadio} />
+                        {errors.status && (
+                            <InputError message={errors.status} />
                         )}
                     </div>
 
@@ -220,12 +220,12 @@ export default function UpdatePost({auth, product}) {
 
                         <input
                             type="file"
-                            name="postImage"
+                            name="image"
                             onChange={hundleTarget}
                         />
 
-                        {errors.postImage && (
-                            <InputError message={errors.postImage} />
+                        {errors.image && (
+                            <InputError message={errors.image} />
                         )}
 
                         {progress && (

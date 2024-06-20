@@ -13,7 +13,7 @@ export default function UpdateDataUser({ user }) {
         avatar: null,
     });
 
-    const hundleChange = (e) => {
+    const handleChange = (e) => {
         const { name, value, type } = e.target;
         if (type === "file") {
             setData(name, e.target.files[0]);
@@ -45,7 +45,7 @@ export default function UpdateDataUser({ user }) {
                     type="text"
                     value={data.name}
                     className="mt-1 block w-full"
-                    onChange={hundleChange}
+                    onChange={handleChange}
                 />
 
                 <InputError message={errors.name} />
@@ -60,7 +60,7 @@ export default function UpdateDataUser({ user }) {
                     name="email"
                     value={data.email}
                     className="mt-1 block w-full"
-                    onChange={hundleChange}
+                    onChange={handleChange}
                 />
 
                 <InputError message={errors.email} />
@@ -74,7 +74,7 @@ export default function UpdateDataUser({ user }) {
                     type="file"
                     name="avatar"
                     className="mt-1 block w-full"
-                    onChange={hundleChange}
+                    onChange={handleChange}
                 />
 
                 <img

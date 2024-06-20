@@ -5,7 +5,7 @@ import { HiOutlineShoppingCart } from "react-icons/hi";
 export default function AddCartButton({ productId }) {
     const { post } = useForm({ product_id: productId });
     const addToCart = (e) => {
-        e.preventDefault();
+        e.preventDefault(); 
         post(route("addCart"));
     };
     return (
